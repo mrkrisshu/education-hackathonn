@@ -49,7 +49,7 @@ function App() {
                 <Route path="notes" element={<NoteEditor />} />
                 <Route path="videos" element={<VideoPlayer videoUrl="https://www.youtube.com/watch?v=v9bOWjwdTlg&t=6073s" />} />
                 <Route path="videos/tutorial" element={<VideoPlayer videoUrl="https://www.youtube.com/watch?v=ix9cRaBkVe0&t=16328s" />} />
-                <Route path="schedule" element={<LessonTracker />} />
+               
               </Route>
             </Routes>
           </AnimatePresence>
