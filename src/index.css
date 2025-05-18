@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans text-gray-900 dark:text-gray-100 bg-gray-50 dark:bg-gray-900 min-h-screen transition-colors duration-200;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif leading-tight;
+  }
+
+  h1 {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold;
+  }
+
+  h2 {
+    @apply text-2xl md:text-3xl lg:text-4xl font-bold;
+  }
+
+  h3 {
+    @apply text-xl md:text-2xl lg:text-3xl font-bold;
+  }
+
+  h4 {
+    @apply text-lg md:text-xl font-bold;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-gray-800 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-gray-700 rounded-full hover:bg-gray-400 dark:hover:bg-gray-600 transition-colors;
+  }
+}
+
+@layer components {
+  /* Buttons and UI elements */
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary-600 hover:bg-primary-700 text-white focus:ring-primary-500;
+  }
+
+  .btn-secondary {
+    @apply btn bg-secondary-600 hover:bg-secondary-700 text-white focus:ring-secondary-500;
+  }
+
+  .btn-accent {
+    @apply btn bg-accent-600 hover:bg-accent-700 text-white focus:ring-accent-500;
+  }
+
+  .btn-outline {
+    @apply btn border-2 bg-transparent border-gray-300 hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-800;
+  }
+
+  .input {
+    @apply w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all duration-200;
+  }
+
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-200 overflow-hidden;
+  }
+
+  .glass-card {
+    @apply bg-white/80 dark:bg-gray-800/80 backdrop-blur-glass shadow-glass rounded-xl;
+  }
+
+  .pill {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  /* Loading animation */
+  .loading-dots .dot {
+    @apply w-2 h-2 mx-1 bg-white rounded-full;
+    animation: bounce 1.4s infinite ease-in-out both;
+  }
+
+  .loading-dots .dot:nth-child(1) {
+    animation-delay: -0.32s;
+  }
+
+  .loading-dots .dot:nth-child(2) {
+    animation-delay: -0.16s;
+  }
+  
+  /* Progress bar animation */
+  .progress-bar {
+    position: relative;
+    overflow: hidden;
+    @apply h-2 bg-gray-200 dark:bg-gray-700 rounded-full;
+  }
+
+  .progress-bar-fill {
+    @apply h-full rounded-full transition-all duration-500 ease-out;
+  }
+
+  /* Star rating animation */
+  .star-rating .star {
+    @apply text-gray-300 cursor-pointer transition-colors duration-200;
+  }
+
+  .star-rating .star.active {
+    @apply text-warning-500;
+  }
+
+  .star-rating .star:hover,
+  .star-rating .star:hover ~ .star {
+    @apply text-warning-400;
+  }
+  
+  /* Flashcard components */
+  .flashcard-container {
+    perspective: 1000px;
+  }
+
+  .flashcard {
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .flashcard.flipped {
+    transform: rotateY(180deg);
+  }
+
+  .flashcard-front,
+  .flashcard-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 0.75rem;
+  }
+
+  .flashcard-back {
+    transform: rotateY(180deg);
+  }
+}
+
+@keyframes bounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
